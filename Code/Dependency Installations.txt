@@ -1,0 +1,5 @@
+dependencies installation:- 
+pip install yagmail
+pip install flask-bootstrap
+npm install bootstrap
+npm install font-awesome

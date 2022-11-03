@@ -1,0 +1,52 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/login.css') }}">
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+    
+    <link rel="stylesheet" type ="text/css" href="{{ url_for('static' , filename='node_modules/bootstrap/dist/css/bootstrap.css')}}">
+     <link rel="stylesheet" href="{{url_for('static' , filename ='font-awesome-4.7.0/css/font-awesome.min.css')}}">
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/temp.css') }}">
+
+
+    <link rel="icon" href="{{url_for('static' , filename ='img/fav.jpg')}}" type="image/x-icon">  
+    <title>Login</title>
+</head>
+
+<body  background="{{ url_for('static', filename='img/background.jpg') }}">
+    <p align="center">
+        <h1 align="center">Oh Nooo Bookings</h1>
+    </p>
+    <br>
+    <h4 align="center">Login</h4>
+    
+    <form action="/login" method="POST">
+    <p align="center">
+        <table align="center">
+        <tr>
+        <td for="inputUsername">Username</td>
+        <td><input type="text" name="username" size="35" required/><br></td>
+        </tr><tr>
+        <td for="inputPassword">Password</td>
+    
+       <td> <input type="password" name="password" size ="35" required/></td></tr>
+        <br>
+        <br>
+        
+       
+    </table>
+    <br>
+    <p align="center">
+     <input class ="btn text-white btn-darkviolet"type="submit"/></p>
+    </p>
+    </form>
+    <br><br><br>
+    <p align ="center">Don't have an account?
+    <a class="btn btn-purple text-white" href="{{url_for('signup')}}">Sign Up</a></p>
+
+</body>
+</html>

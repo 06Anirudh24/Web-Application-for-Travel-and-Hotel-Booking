@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+  
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/temp.css') }}">
+    <link rel="stylesheet" href="{{url_for('static' , filename ='font-awesome-4.7.0/css/font-awesome.min.css')}}">
+    <link rel="icon" href="{{url_for('static' , filename ='img/fav.jpg')}}" type="image/x-icon"> 
+    <title>Travel Planning Step 2</title>
+</head>
+<body background="{{ url_for('static', filename='img/background.jpg') }}">
+	
+	<h4 align = "center">Choose the Company you wish to travel with: </h4>
+	<br>
+	<p align="center">You have chosen to travel from {{newTransport.from_dest}} to {{newTransport.to_dest}}  </p>
+	<p align="center"><a class="btn btn-purple text-white" href= '{{url_for("travel" , newTransport_id = newTransport.booking_id )}}' >Return to Step 1</a><br>
+	
+	</p>
+	<form action="{{url_for('travelcomp' , newTransport_id = newTransport.booking_id)}}" method ='POST'>
+	<p align ="center">
+	<input type ="submit" name ="action" class="btn btn-rose text-white" value= "All">
+	<input type ="submit" name ="action" class="btn btn-rose1 text-white" value ="Flights">
+	<input type ="submit" name ="action"  class="btn btn-rose2 text-white" value="Trains"><br><br>
+	<input type ="submit" class="text-white btn btn-rosepink " name ="action" value = "Submit" ></p>
+	<div class="container">
+	<div class="row" >
+	
+	{% for i in travelcomp %}
+
+	<div class="col col-6">
+	<div class= "card card-transparent">
+
+	<h5 class="card-header" align="center">{{i.travel_name}}</h5>
+
+	<p class="card-text">
+	<table align= "center"><tr> <td><b>Contact details:</b></td><td> {{i.travel_contact}}</td></tr>
+	<br>
+	
+
+	
+	{%for m in mode%} 
+	
+	{%if i.mode_id == m.mode_id%}
+	<tr><td><b>Available seat type:</b></td><td>{{m.mode_of_transport}} </td></tr>
+	{% endif %}
+	{% endfor %}
+	<br>
+	<tr><td><b>Number of tickets left:</b></td> <td>{{i.num_tickets}}</td></tr></table></p>
+	<br>
+	<p align="center">
+		<div class= "radio-option"><table align="center"><tr><td><input type="radio" name="options"  value="{{i.travel_id}}">     Proceed with {{i.travel_name}}?</input> </td></tr></table></div>
+	</p>
+</br>
+
+</div>
+<br><br><br>
+</div>
+
+{% endfor %}
+
+</div>
+</div>
+
+
+
+
+
+
+
+
+</form>
+</body>
+</html>
